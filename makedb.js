@@ -96,10 +96,3 @@ createTable(connection)
   .then(() => {
     return createRecord(connection, {Email: 'admin', Password: md5('abc123')})
   })
-  .then(() => {
-    Promise.all(Array(recordCount).fill().map(() => createRecord(connection, {})))
-      .then(() => {
-        connection.end()
-        console.log('done')
-      })
-  })
