@@ -205,7 +205,7 @@ app.post('/api/login', (req, res) => {
     if (err) {
       console.log('ERROR', err)
       res.sendStatus(401)
-    } else if (records.length > 1) {
+    } else if (records.length !== 1) {
       console.log('too many matching users')
       res.sendStatus(401)
     } else if (records[0].Password !== md5(req.body.password)) {
