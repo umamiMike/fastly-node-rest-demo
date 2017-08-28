@@ -24,7 +24,7 @@ const createTable = (connection) => {
           ${fields},
           Avatar TEXT(100000),
           PRIMARY KEY (ID)
-        );
+        )ENGINE=InnoDB;
       `
       connection.query(query, (err, results) => {
         if (err) reject(err)
@@ -39,9 +39,9 @@ const createTable = (connection) => {
             CREATE TABLE Photos (
               ID int NOT NULL AUTO_INCREMENT,
               Email varchar(255),
-              Photo TEXT(10000000),
+              Photo LONGBLOB,
               PRIMARY KEY (ID)
-            );
+            )ENGINE=InnoDB;
           `
           connection.query(query, (err, results) => {
             if (err) reject(err)

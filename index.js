@@ -93,7 +93,13 @@ const getSurrogateKeys = (records, type) => {
 }
 
 const sendJsonApiResponse = (res, records, type, pagination) => {
-  const formattedResponse = records.map(record => {
+  const encodedRecords = records.map((record) => {
+    if (Object.keys(record).includes('Photo')) {
+      record.Photo = record.Photo.toString('utf-8')
+    }
+    return record
+  })
+  const formattedResponse = encodedRecords.map(record => {
     return {
       type,
       id: record.ID,

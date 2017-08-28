@@ -90,6 +90,8 @@ apt-get install -y mysql-server nginx imagemagick
 
 `git clone https://github.com/psbanka/fastly-node-rest-demo.git`
 
+1. Set your mysql config  ` max_allowed_packet	= 4G`
+
 2. Create a database user and a database in mysql for this project, such
 as:
 
@@ -185,6 +187,7 @@ http {
     server {
         listen       80;
         server_name  localhost;
+        client_max_body_size 4G;
 
         location / {
             proxy_pass http://localhost:3333;
